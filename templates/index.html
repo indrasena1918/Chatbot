@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Local AI Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Local AI Chat home">
+        <span class="brand-icon" aria-hidden="true">✳</span>
+        <span>Local AI</span>
+      </a>
+      <span class="model-badge"><span class="status-dot"></span> qwen2.5:3b</span>
+    </header>
+
+    <section class="chat-card" aria-label="Chat with the local AI">
+      <div class="chat-heading">
+        <div>
+          <p class="eyebrow">YOUR PRIVATE AI ASSISTANT</p>
+          <h1>What can I help with?</h1>
+          <p class="subtitle">A friendly conversation, powered locally by Ollama.</p>
+        </div>
+        <button class="clear-button" id="clear-button" type="button" title="Clear conversation">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"></path>
+          </svg>
+          <span>Clear chat</span>
+        </button>
+      </div>
+
+      <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions">
+        <div class="welcome-message" id="welcome-message">
+          <span class="welcome-icon" aria-hidden="true">✦</span>
+          <p>Hi there! Ask me anything to get started.</p>
+        </div>
+      </div>
+
+      <form class="composer" id="chat-form">
+        <label class="visually-hidden" for="message-input">Your message</label>
+        <textarea
+          id="message-input"
+          name="message"
+          rows="1"
+          maxlength="4000"
+          placeholder="Message your AI assistant..."
+          autocomplete="off"
+          required
+        ></textarea>
+        <button class="send-button" id="send-button" type="submit" aria-label="Send message">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </form>
+      <p class="composer-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift + Enter</kbd> for a new line</p>
+    </section>
+
+    <footer class="page-footer">Your messages stay on this computer.</footer>
+  </main>
+</body>
+</html>
